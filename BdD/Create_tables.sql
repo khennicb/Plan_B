@@ -25,9 +25,18 @@ CREATE TABLE Artiste_Pseudo(
 	primary key (idArtiste, pseudo)
 )
 
-CREATE TABLE Artiste_NumTel(
+CREATE TABLE Artiste_Telephone(
 	idArtiste int primary key foreign key references Artiste(id),
 	numTel char(10) not null
+)
+
+
+-- TODO : add table Numero
+
+CREATE TABLE Artiste_Participe(
+	idArtiste int foreign key references Artiste(id),
+	codeNumero int foreign key references Numero(code),
+	primary key (idArtiste, codeNumero)
 )
 
 CREATE TABLE Festival(
