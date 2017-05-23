@@ -19,4 +19,6 @@ public class Participant {
     private ArrayList<String> pseudos;
     
     private String numeroTelephone;
+    
+    private Cirque cirque = null;
 }
