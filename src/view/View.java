@@ -1,10 +1,8 @@
 package view;
 
-import java.io.InputStreamReader;
-import java.io.Reader;
+import controller.Controller;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public abstract class View {
     
@@ -42,10 +40,10 @@ public abstract class View {
         
         System.out.println("");
         
-        Controller next = choix.get(res).get(1);
+        Controller next = (Controller)choix.get(res).get(1);
         
         if(next == null){
-            System.err.println("Erreur : Controlleur pour " + choix.get(res).get(0) + " pas encore implémenté !");
+            System.err.println("Erreur : Contrôleur pour \"" + choix.get(res).get(0) + "\" pas encore implémenté ou lié !");
         } else {
             next.execute();
         }
