@@ -1,7 +1,6 @@
-package src;
-import src.JDBC.*;
-import src.view.*;
-import src.Model.*;
+import JDBC.*;
+import view.*;
+import Model.*;
 
 public class FestivalSimulator {
     
@@ -9,7 +8,9 @@ public class FestivalSimulator {
         
         System.out.println("hello world");
         
-        
+        // Test Temporaire
+        Home home = new Home();
+        home.print();
     }
     
 }
