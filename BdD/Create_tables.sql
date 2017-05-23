@@ -1,5 +1,5 @@
 begin;
---
+
 CREATE TABLE Theme(
 	id int primary key auto_increment,
 	nomTheme varchar(100) not null unique 
@@ -16,7 +16,7 @@ CREATE TABLE Artiste(
 	prenom varchar(100) not null,
 	dateNaissance date not null,
 	adresse varchar(255) not null,
-	idCirque foreign key references Cirque(id) 
+	idCirque int foreign key references Cirque(id) 
 );
 
 CREATE TABLE Expert(
@@ -40,7 +40,7 @@ CREATE TABLE Numero(
 	titre varchar(100) not null,
 	theme int foreign key references Theme(id),
 	resume varchar(500) not null,
-	duree int not null
+	duree int not null check (duree >= 20 and duree <= 40)
 );
 
 CREATE TABLE Artiste_Participe(
@@ -58,7 +58,7 @@ CREATE TABLE Expert_Evaluation(
 	idExpert int foreign key references Expert(idArtiste),
 	codeNumero int foreign key references Numero(code),
 	commentaire varchar(500),
-	note int,
+	note int check (note is null or (note >= 0 and note <=10)),
 	primary key (idExpert, codeNumero)
 );
 
@@ -68,9 +68,16 @@ CREATE TABLE Festival(
 	dateFin date not null
 );
 
+CREATE TABLE Classement(
+	idFestival int foreign key references Festival(id),
+	codeNumero int foreign key references Numero(code),
+	classement int not null default 0,
+	primary key (idFestival, codeNumero)
+);
+
 CREATE TABLE Spectacle(
 	id int primary key auto_increment,
-	idFestival int foreign key references Festival(id)
+	idFestival int foreign key references Festival(id),
 	theme int foreign key references Theme(id),
 	numJour smallint not null,
 	heureDebut time not null,
