@@ -10,17 +10,17 @@ public class Home extends View {
         System.out.println("║ FESTIVAL SIMULATOR 2017 ║");
         System.out.println("╚═════════════════════════╝");
         System.out.println("Veuillez choisir votre rôle :");
-        System.out.println("\t1 : Un organisateur");
-        System.out.println("\t2 : Un expert");
+        addChoix('o', "Un organisateur");
+        addChoix('e', "Un expert");
         System.out.print("Vous êtes : ");
-        int res = ask(1, 2);
+        int res = ask();
         
         switch(res){
-            case 1 : 
+            case 'o' : 
+                // todo appeler controleur home organisateur
                 break;
-            case 2 :
-                break;
-            default : 
+            case 'e' :
+                // todo appeler controleur home expert
                 break;
         }
     }
