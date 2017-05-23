@@ -8,7 +8,9 @@ public class FestivalSimulator {
         
         System.out.println("hello world");
         
-        
+        // Test Temporaire
+        Home home = new Home();
+        home.print();
     }
     
 }
