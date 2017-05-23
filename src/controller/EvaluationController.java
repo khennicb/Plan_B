@@ -1,5 +1,11 @@
 package controller;
 
-public class EvaluationController {
+import view.*;
+public class EvaluationController implements Controller{
+
+    @Override
+    public void execute() {
+        
+    }
 	
 }
