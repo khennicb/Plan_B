@@ -1,7 +1,6 @@
-package src;
-import src.JDBC.*;
-import src.view.*;
-import src.Model.*;
+import JDBC.*;
+import view.*;
+import Model.*;
 
 public class FestivalSimulator {
     
