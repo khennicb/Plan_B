@@ -10,19 +10,11 @@ public class Home extends View {
         System.out.println("║ FESTIVAL SIMULATOR 2017 ║");
         System.out.println("╚═════════════════════════╝");
         System.out.println("Veuillez choisir votre rôle :");
-        System.out.println("\t1 : Un organisateur");
-        System.out.println("\t2 : Un expert");
+        addChoice('o', "Un organisateur", null);
+        addChoice('e', "Un expert", null);
         System.out.print("Vous êtes : ");
-        int res = ask(1, 2);
         
-        switch(res){
-            case 1 : 
-                break;
-            case 2 :
-                break;
-            default : 
-                break;
-        }
+        askAndGo();
     }
     
 }

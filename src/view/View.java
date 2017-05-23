@@ -1,32 +1,66 @@
 package view;
 
-import java.util.Scanner;
+import controller.Controller;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class View {
     
+    private final HashMap<Integer, ArrayList> choix = new HashMap<>();
+    
     abstract public void print();
     
-    static public int ask(int min, int max){
-        Scanner sin = new Scanner(System.in);
-        
-        int res = min-1;
+    public void addChoice(char cle, String description, Object controller) {
+        ArrayList<Object> arr = new ArrayList<>();
+        arr.add(description);
+        arr.add(controller);
+        choix.put((int)cle, arr);
+        System.out.println("\t" + cle + " : " + description);
+    }
+    
+    public void askAndGo() {
+        int res = -1;
         boolean ok = false;
         
         while(!ok) {
-            if (sin.hasNextInt()) {
-                res = sin.nextInt();
-                
-                ok = (min <= res && res <= max);
-                
-                if(!ok) {
-                    System.out.print("Saisir un nombre entre " + min + " et " + max + " : ");
-                }
-            } else {
-                sin.nextLine();
-                System.out.print("Saisir un nombre valide : ");
+            try {
+                modeSync();
+                res = System.in.read();
+                modeDesync();
+            } catch (Exception e) {
+                System.err.println("Erreur de lecture.");
+            }
+
+            ok = choix.containsKey(res);
+
+            if(!ok) {
+                System.out.print("Saisir un choix valide : ");
             }
         }
         
-        return res;
+        System.out.println("");
+        
+        Controller next = (Controller)choix.get(res).get(1);
+        
+        if(next == null){
+            System.err.println("Erreur : Contrôleur pour \"" + choix.get(res).get(0) + "\" pas encore implémenté ou lié !");
+        } else {
+            next.execute();
+        }
+        
+    }
+    
+    public static void modeSync(){
+        try {
+            String[] cmd = {"/bin/sh", "-c", "stty raw </dev/tty"};
+            Runtime.getRuntime().exec(cmd).waitFor();
+        } catch(Exception e) { System.err.println("Erreur synchronisation inputs"); }
+    }
+    
+    public static void modeDesync(){
+        try {
+            String[] cmd = {"/bin/sh", "-c", "stty -raw </dev/tty"};
+            Runtime.getRuntime().exec(cmd).waitFor();
+        } catch(Exception e) { System.err.println("Erreur desynchronisation inputs"); }
     }
 }
