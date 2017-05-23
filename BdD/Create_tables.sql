@@ -16,7 +16,7 @@ CREATE TABLE Artiste(
 	prenom varchar(100) not null,
 	dateNaissance date not null,
 	adresse varchar(255) not null,
-	idCirque foreign key references Cirque(id) 
+	idCirque int foreign key references Cirque(id) 
 );
 
 CREATE TABLE Expert(
