@@ -14,41 +14,19 @@ public class HomeOrganisateur extends View {
     @Override
     public void print() {
         System.out.println("Vous pouvez :");
-        addChoix('c', "Gérer les cirques");
-        addChoix('e', "Gérer les experts");
-        addChoix('n', "Gérer les numéros");
-        addChoix('t', "Gérer les thèmes");
-        addChoix('a', "Gérer les artistes");
-        addChoix('j', "Ajouter un jury");
-        addChoix('d', "Demander l'affectation d'un jury");
-        addChoix('f', "Afficher le programme du festival");
-        addChoix('s', "Afficher le programme d'un spectacle");
-        addChoix('r', "Affecter un numéro à un spectacle");
+        addChoice('c', "Gérer les cirques", null);
+        addChoice('e', "Gérer les experts", null);
+        addChoice('n', "Gérer les numéros", null);
+        addChoice('t', "Gérer les thèmes", null);
+        addChoice('a', "Gérer les artistes", null);
+        addChoice('j', "Ajouter un jury", null);
+        addChoice('d', "Demander l'affectation d'un jury", null);
+        addChoice('f', "Afficher le programme du festival", null);
+        addChoice('s', "Afficher le programme d'un spectacle", null);
+        addChoice('r', "Affecter un numéro à un spectacle", null);
         System.out.print("Vous voulez faire : ");
-        int res = ask();
         
-        switch(res){
-            case 'c' : 
-                break;
-            case 'e' :
-                break;
-            case 'n' :
-                break;
-            case 't' :
-                break;
-            case 'a' :
-                break;
-            case 'j' :
-                break;
-            case 'd' :
-                break;
-            case 'f' :
-                break;
-            case 's' :
-                break;
-            case 'r' :
-                break;
-        }
+        askAndGo();
     }
     
 }

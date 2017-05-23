@@ -2,23 +2,25 @@ package view;
 
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public abstract class View {
     
-    private final HashMap<Integer, String> choix = new HashMap<>();
+    private final HashMap<Integer, ArrayList> choix = new HashMap<>();
     
     abstract public void print();
     
-    public void addChoix(char cle, String description) {
-        choix.put((int)cle, description);
+    public void addChoice(char cle, String description, Object controller) {
+        ArrayList<Object> arr = new ArrayList<>();
+        arr.add(description);
+        arr.add(controller);
+        choix.put((int)cle, arr);
         System.out.println("\t" + cle + " : " + description);
     }
     
-    public int ask() {
-        Reader reader = new InputStreamReader(System.in);
-        
+    public void askAndGo() {
         int res = -1;
         boolean ok = false;
         
@@ -40,7 +42,14 @@ public abstract class View {
         
         System.out.println("");
         
-        return res;
+        Controller next = choix.get(res).get(1);
+        
+        if(next == null){
+            System.err.println("Erreur : Controlleur pour " + choix.get(res).get(0) + " pas encore implémenté !");
+        } else {
+            next.execute();
+        }
+        
     }
     
     public static void modeSync(){
