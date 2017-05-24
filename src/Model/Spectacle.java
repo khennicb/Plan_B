@@ -1,8 +1,8 @@
 
 package Model;
 
+import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Spectacle {
     
@@ -10,9 +10,11 @@ public class Spectacle {
     
     private int numJour;
     
-    private Date dateDebut;
+    private Time heureDebut;
     
-    private Date dateFin;
+    private Time heureFin;
+    
+    private int prix;
     
     private Festival festival = null;
     
