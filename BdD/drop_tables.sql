@@ -6,8 +6,6 @@ DROP TABLE Classement;
 
 DROP TABLE Festival;
 
-DROP TABLE Festival;
-
 DROP TABLE Expert_Evaluation;
 
 DROP TABLE Artiste_Principal;
