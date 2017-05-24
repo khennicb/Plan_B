@@ -1,5 +1,3 @@
-begin;
-
 DROP TABLE Theme;
 
 DROP TABLE Cirque;
@@ -27,5 +25,3 @@ DROP TABLE Classement;
 DROP TABLE Spectacle;
 
 DROP TABLE Spectacle_Numeros;
-
-rollback;
