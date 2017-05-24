@@ -1,7 +1,7 @@
 
 package Model;
 
-import java.util.Date;
+import java.sql.Time;
 
 public class SpectacleNumero {
     
@@ -9,5 +9,5 @@ public class SpectacleNumero {
     
     private Numero numero = null;
     
-    private Date datePassage;
+    private Time heurePassage;  
 }
